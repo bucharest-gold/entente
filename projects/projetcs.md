@@ -12,3 +12,6 @@
     * [Issues here](https://issues.jboss.org/issues/?jql=project%20%3D%20HAWKULAR%20AND%20resolution%20%3D%20Unresolved%20AND%20text%20~%20%22hawkular-ui-services%22)
 4. [Apiman](https://github.com/apiman/apiman/tree/master/manager/ui/war)
 5. [Fabric8-console](https://github.com/fabric8io/fabric8-console)
+6. [AeroGear UnifiedPush Server](https://github.com/aerogear/aerogear-unifiedpush-server)
+    * [Issues here](https://issues.jboss.org/browse/AGPUSH/)
+    * [node sender client](https://www.npmjs.com/package/unifiedpush-node-sender)
