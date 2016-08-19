@@ -26,6 +26,7 @@ To date, we have created or assisted with the following projects.
 * [API Man Admin Client](https://www.npmjs.com/package/apiman-admin-client)
 * [Unified Push Registration Client](https://www.npmjs.com/package/unifiedpush-registration-client)
 * [Unified Push Admin Client](https://www.npmjs.com/package/unifiedpush-admin-client)
+* [Unified Push Registration Client](https://www.npmjs.com/package/unifiedpush-registration-client)
 * [Unified Push Node Sender](https://www.npmjs.com/package/unifiedpush-node-sender)
 * [The Infinispan client](https://www.npmjs.com/package/infinispan)
 
