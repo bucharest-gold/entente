@@ -82,7 +82,13 @@ We like semicolons. Embrace them! We use the
 styling. The best way we have found to accomplish this is to use the `semistandard`
 plugins for `eslint` in our builds.
 
-Install `eslint` and the `semistandard` and dependent plugins.
+First, add an `.eslintrc.json` file to your project and put this in there.
+
+    {
+      "extends": "semistandard"
+    }
+
+Then install `eslint` and the `semistandard` and dependent plugins.
 
     $ npm install --save-dev eslint eslint-config-semistandard \
       eslint-config-standard eslint-plugin-promise eslint-plugin-react \
