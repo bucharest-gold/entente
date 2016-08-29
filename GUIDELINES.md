@@ -1,4 +1,4 @@
-# Node.js Coding Guidelines
+# Node.js Project Guidelines
 
 Here are some of the standards we have come up with over the months.
 
