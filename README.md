@@ -43,6 +43,7 @@ A few side projects have grown so far from our internal development needs.
 * [Fidelity](https://www.npmjs.com/package/fidelity) - a Promise/A+ compliant module
 * [ROI](https://www.npmjs.com/package/roi) - a dependency-free http module
 * [Lightbright](https://www.npmjs.com/package/lightbright) - a lightweight module for code tracing
+* [Genet](https://www.npmjs.com/package/genet) - a code profiling tool
 
 ### Coordination with RHEL Software Collections
 
