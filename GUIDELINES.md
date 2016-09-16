@@ -174,3 +174,21 @@ A typical `.travis.yml` file might look something like this.
       - make ci
     notifications:
       irc: "chat.freenode.net#brass-monkey"
+
+## Release process
+
+Publishing packages to NPM usually just means running `$ npm publish` on the
+command line. But we like to have a little process around that. Some notes on
+our process follow.
+
+1. Always add `nsp` to your project as a `prepublish` property in `scripts`. This will ensure
+   that you can't publish your project if there are known security vulnerabilities.
+2. Ensure that `master` (or whatever release branch you use) passes a build on CI.
+3. Tag `master` with your version number. Typically, this begins with a 'v'. For example
+   `v4.1.2` is the tag for version 4.1.2.
+4. Push your changes, including the tags to github. `$ git push origin master --tags`
+5. Run `$ npm publish` to actually publish the package.
+6. Assuming all goes well, head over to your project on github and update the
+   release with any relevant notes. Here is a simple example:
+   [Fidelity v4.1.0](https://github.com/bucharest-gold/fidelity/releases/tag/v4.1.0)
+7. Tweet, blog and otherwise promote your awesome success!
