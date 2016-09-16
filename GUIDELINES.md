@@ -18,6 +18,33 @@ it's always a good idea to include quality metadata in your `package.json` using
 package properties. When you're starting a new project, you can use `npm init`
 to get a good start on this.
 
+We recommend the following properties for all packages.
+
+* All of the standard properties that are created when you run `npm init`.
+  * `name` : The name of your package. Typically we recommend against using
+    package names that include the words 'node', 'nodejs' or 'javascript',
+    since it's pretty obvious what we're dealing with, given that
+    it's an NPM pacakge.
+  * `version` : Use sematic versioning. `Major.minor.patch`
+  * `description` : A brief description of the package
+  * `main` : The entry point for the application.
+  * `scripts` : Here you specify the various build scripts that can be run. We
+    typically use `test`, `lint`, `coverage`, `docs`, and `prepublish`.
+    See below for recommendations on each of these tools.
+  * `author` : In the form `"V. Van Gogh <vvangogh@redhat.com> (https://oh.myear.com)"`
+  * `license` : We typically use Apache-2.0
+* Sometimes `author` doesn't make sense, because, well, it's all collaborative, right?
+  In that case, be sure to use the `contributors` property, which is just an array of
+  strings formatted just like those for the `author` property.
+* The `files` property is useful for keeping your distribution clean and free of detritus
+* The `keywords` property is really important for searches on npmjs.com - so use it!
+* Always be sure to include a `repository` property to encourage community involvement.
+  this property is linked from the package page on npmjs.com.
+* Finally, be sure to keep your runtime and development dependencies separated. This
+  will keep your package distribution down to a reasonable size. Use `dependencies`
+  for everything that is needed at runtime, and `devDependencies` for those packages
+  you depend on only during builds or for CI.
+
 ## Build Tools
 
 We use `make` in conjunction with `npm script` for all but the
