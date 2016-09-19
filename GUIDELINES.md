@@ -139,6 +139,70 @@ Add a `make` target
     node_modules: package.json
             npm install
 
+### Some things linting will catch
+
+Unused variables, proper casing of function and variable names, undeclared global variables,
+modification of global variables, missing semi-colons. Catching unused variables is great
+because this might alert you to a typo in your code. Modifying global variables could have
+adverse affects on other code within your system, including dependencies, if the other code
+is not aware of the modifications. For these and many other reasons, we think linting is a
+'good thing'.
+
+### Some things linting _won't_ catch, but that you should consider
+
+At this point, we eschew any Node.js version below 4.x. This means, that usage of ES6
+features is possible. And there are some good features to take advatage of. Here are
+some of our recommendations.
+
+* Use `let` and `const` instead of `var`. There is rarely ever a valid case for using
+  `var` in modern javascript code. If the variable is immutable (which I believe most
+  should be), use `const`. If the variable may be written, use `let`.
+* Use promises for asynchronous code execution, where appropriate. (Consider using
+  bucharest-gold/fidelity).
+* Use the new ES6 `class` keyword to create classess, and avoid direct manipulation
+  of prototypes.
+* Use `Symbol`s to keep private data private. There are a few ways to achieve data privacy
+  in Javascript. We've found that using a `Symbol` as a key is the most performant.
+  See: http://www.2ality.com/2016/01/private-data-classes.html
+* Eliminate or minimize the use of `this`. A given function may execute with a `this`
+  context that is different than what is expected, E.g. `myFunc.apply(undefined);`.
+
+Here is an example usage the above techniques to implement a class in ES6.
+
+```javascript
+const LENGTH = Symbol('length');
+const WIDTH  = Symbol('width');
+
+// A simple ES6 class
+class Rectangle {
+  // Use the Symbols for property keys. They are private to the module, so users
+  // don't have access to the property via `myRectangle[LENGTH]`. Instead, a
+  // getter is used (see below)
+  constructor (length, width) {
+    this[LENGTH] = length;
+    this[WIDTH] = width;
+  }
+
+  // The `this` object cannot be modified with a getter
+  // so using `this[LENGTH]` here is safe.
+  get length () {
+    return this[LENGHT];
+  }
+
+  // Same as above. Use a getter for object properties.
+  get width () {
+    return this[WIDTH];
+  }
+}
+
+// My preference is to use standalone functions rather than object methods.
+// This avoids the (possibly dangerous) use of the `this` keyword.
+function area (rectangle) {
+  return rectangle.length * rectangle.width;
+}
+
+```
+
 ## Security
 
 Use [`nsp`](https://www.npmjs.com/package/nsp) as part of your build. This package
