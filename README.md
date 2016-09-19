@@ -44,7 +44,7 @@ A few side projects have grown so far from our internal development needs.
 * [ROI](https://www.npmjs.com/package/roi) - a dependency-free http module
 * [Lightbright](https://www.npmjs.com/package/lightbright) - a lightweight module for code tracing
 * [Genet](https://www.npmjs.com/package/genet) - a code profiling tool
-* [Genet](https://www.npmjs.com/package/szero) - a dependency checker
+* [Szero](https://www.npmjs.com/package/szero) - a dependency checker
 
 
 ### Coordination with RHEL Software Collections
