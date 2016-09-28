@@ -1,4 +1,28 @@
 const fs = require('fs');
+const execSync = require('child_process').execSync;
+
+const gitUser = execSync('git config user.name').toString().replace('\n','');
+const user = gitUser || 'USER';
+
+function createLicense () {
+  const LICENSE =`
+Copyright 2016 Red Hat, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+`
+  fs.writeFileSync('LICENSE', LICENSE);
+}
+
+createLicense();
 
 const content = `{ 
   "extends": "semistandard"
@@ -10,7 +34,7 @@ module.exports = {
   name: prompt('name', basename || package.name),
   version: '0.0.1',
   description: prompt(s => s),
-  main: prompt('entry point', 'index.js', ep => fs.writeFileSync(ep, '')),
+  main: prompt('entry point', 'index.js', ep => fs.writeFileSync(ep, 'module.exports = exports = {};\n\n')),
   author: 'Red Hat, Inc.',
   license: 'Apache-2.0',
   scripts: {
@@ -21,7 +45,7 @@ module.exports = {
   },
   repository: {
     type: 'git',
-    url: 'git://github.com/USER/' + basename + '.git'
+    url: `git://github.com/${user}/${basename}.git`
   },
   files: [
     'package.json',
@@ -29,9 +53,9 @@ module.exports = {
     'LICENSE',
     'index.js'
   ],
-  bugs: {url: 'https://github.com/USER/' + basename + '/issues'},
-  homepage: 'https://github.com/USER/' + basename,
-  keywords: prompt(s => s.split(/\s+/)),
+  bugs: {url: `https://github.com/${user}/${basename}/issues`},
+  homepage: `https://github.com/${user}/${basename}`,
+  keywords: prompt('Enter keywords separated by a space', s => s.split(/\s+/)),
   devDependencies: {
     eslint: '*',
     'eslint-config-semistandard': '*',
@@ -43,8 +67,5 @@ module.exports = {
     nsp: '*',
     'tap-spec': '*',
     tape: '*'
-  },
-  cleanup: function (cb) {
-    cb(null, undefined);
   }
 };
