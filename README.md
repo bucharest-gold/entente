@@ -48,7 +48,6 @@ A few side projects have grown so far from our internal development needs.
 
 
 ### Coordination with RHEL Software Collections
-### Coordination with RHEL Software Collections
 
 The release cadence for Node.js has increased significantly and shows no sign of slowing.
 Node 6.x is current, while Node.js 7.0 is expected in October 2016. The next LTS release,
