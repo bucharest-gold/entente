@@ -2,7 +2,7 @@ const fs = require('fs');
 const execSync = require('child_process').execSync;
 
 const gitUser = execSync('git config user.name').toString().replace('\n','');
-const user = gitUser || 'USER';
+let user = gitUser || 'USER';
 
 function createLicense () {
   const LICENSE =`
@@ -24,13 +24,14 @@ limitations under the License.
 
 createLicense();
 
-const content = `{ 
+const content = `{
   "extends": "semistandard"
-}`
+}`;
 fs.writeFileSync('.eslintrc.json', content);
 fs.mkdirSync('test');
 
 module.exports = {
+  gitHubUser: prompt('GitHub user name', user, n => user = n),
   name: prompt('name', basename || package.name),
   version: '0.0.1',
   description: prompt(s => s),
@@ -43,9 +44,11 @@ module.exports = {
     prepublish: 'nsp check',
     coverage: 'istanbul cover tape test/*.js'
   },
-  repository: {
-    type: 'git',
-    url: `git://github.com/${user}/${basename}.git`
+  get repository () {
+    return {
+      type: 'git',
+      url: `git://github.com/${user}/${basename}.git`
+    };
   },
   files: [
     'package.json',
@@ -53,8 +56,12 @@ module.exports = {
     'LICENSE',
     'index.js'
   ],
-  bugs: {url: `https://github.com/${user}/${basename}/issues`},
-  homepage: `https://github.com/${user}/${basename}`,
+  get bugs () {
+    return {url: `https://github.com/${user}/${basename}/issues`};
+  },
+  get homepage () {
+    return `https://github.com/${user}/${basename}`;
+  },
   keywords: prompt('Enter keywords separated by a space', s => s.split(/\s+/)),
   devDependencies: {
     eslint: '*',
