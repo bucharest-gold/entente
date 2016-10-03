@@ -1,3 +1,7 @@
+/**
+ * NPM initialization script
+ */
+
 const fs = require('fs');
 const execSync = require('child_process').execSync;
 
@@ -22,20 +26,24 @@ limitations under the License.
   fs.writeFileSync('LICENSE', LICENSE);
 }
 
-createLicense();
+if (!exists('LICENSE')) {
+  createLicense();
+}
 
-const content = `{
+if (!exists('.eslintrc.json')) {
+  fs.writeFileSync('.eslintrc.json', `{
   "extends": "semistandard"
-}`;
-fs.writeFileSync('.eslintrc.json', content);
-fs.mkdirSync('test');
+}`);
+}
 
-module.exports = {
-  gitHubUser: prompt('GitHub user name', user, n => user = n),
-  name: prompt('name', basename || package.name),
+if (!exists('test')) {
+  fs.mkdirSync('test');
+}
+
+const baseData = {
+  name: basename || package.name,
   version: '0.0.1',
-  description: prompt(s => s),
-  main: prompt('entry point', 'index.js', ep => fs.writeFileSync(ep, 'module.exports = exports = {};\n\n')),
+  main: 'index.js',
   author: 'Red Hat, Inc.',
   license: 'Apache-2.0',
   scripts: {
@@ -44,11 +52,9 @@ module.exports = {
     prepublish: 'nsp check',
     coverage: 'istanbul cover tape test/*.js'
   },
-  get repository () {
-    return {
-      type: 'git',
-      url: `git://github.com/${user}/${basename}.git`
-    };
+  repository: {
+    type: 'git',
+    url: `git://github.com/${user}/${basename}.git`
   },
   files: [
     'package.json',
@@ -56,13 +62,8 @@ module.exports = {
     'LICENSE',
     'index.js'
   ],
-  get bugs () {
-    return {url: `https://github.com/${user}/${basename}/issues`};
-  },
-  get homepage () {
-    return `https://github.com/${user}/${basename}`;
-  },
-  keywords: prompt('Enter keywords separated by a space', s => s.split(/\s+/)),
+  bugs: {url: `https://github.com/${user}/${basename}/issues`},
+  homepage: `https://github.com/${user}/${basename}`,
   devDependencies: {
     eslint: '*',
     'eslint-config-semistandard': '*',
@@ -76,3 +77,48 @@ module.exports = {
     tape: '*'
   }
 };
+
+let customizedData = {};
+Object.assign(customizedData, baseData);
+
+customizedData.gitHubUser = prompt('GitHub user name', user, n => user = n);
+customizedData.name = prompt('name', basename || package.name);
+customizedData.description = prompt(s => s);
+customizedData.main = prompt('entry point', 'index.js',
+  ep => !exists(ep) && fs.writeFileSync(ep, 'module.exports = exports = {};\n\n' ));
+customizedData.keywords = prompt('Enter keywords separated by a space', s => s.split(/\s+/));
+
+Object.defineProperties(customizedData, {
+  repository: {
+    get: () => {
+      return {
+        type: 'git',
+        url: `git://github.com/${user}/${basename}.git`
+      };
+    }
+  },
+  bugs: {
+    get: () => {
+      return {url: `https://github.com/${user}/${basename}/issues`};
+    }
+  },
+  homepage: {
+    get: () => `https://github.com/${user}/${basename}`
+  }
+});
+
+if (yes) {
+  console.log('Assuming all defaults.');
+  module.exports = baseData;
+} else {
+  module.exports = customizedData;
+}
+
+function exists (name) {
+  try {
+    fs.statSync(name);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
