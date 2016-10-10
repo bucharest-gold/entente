@@ -50,7 +50,8 @@ const baseData = {
     test: 'tape test/*.js | tap-spec',
     lint: 'eslint test/*.js index.js',
     prepublish: 'nsp check',
-    coverage: 'istanbul cover tape test/*.js'
+    coverage: 'istanbul cover tape test/*.js',
+    dependencyCheck: 'szero . --ci'
   },
   repository: {
     type: 'git',
@@ -74,7 +75,8 @@ const baseData = {
     istanbul: '*',
     nsp: '*',
     'tap-spec': '*',
-    tape: '*'
+    tape: '*',
+    'szero': '^0.5.1'
   }
 };
 
