@@ -66,16 +66,16 @@ const baseData = {
   bugs: {url: `https://github.com/${user}/${basename}/issues`},
   homepage: `https://github.com/${user}/${basename}`,
   devDependencies: {
-    eslint: '*',
-    'eslint-config-semistandard': '*',
-    'eslint-config-standard': '*',
-    'eslint-plugin-promise': '*',
-    'eslint-plugin-react': '*',
-    'eslint-plugin-standard': '*',
-    istanbul: '*',
-    nsp: '*',
-    'tap-spec': '*',
-    tape: '*',
+    eslint: '~3.7.1',
+    'eslint-config-semistandard': '~7.0.0',
+    'eslint-config-standard': '~6.2.0',
+    'eslint-plugin-promise': '~3.0.0',
+    'eslint-plugin-react': '~6.4.1',
+    'eslint-plugin-standard': '~2.0.1',
+    istanbul: '~0.4.5',
+    nsp: '~2.6.2',
+    'tap-spec': '~4.1.1',
+    tape: '~4.6.2',
     'szero': '^0.5.1'
   }
 };
