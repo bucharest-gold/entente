@@ -40,8 +40,10 @@ Doing so based on test results is even better.
 ## Sources used to make the tests
 
 Our current plan on this issue is to write test cases to get results based on:
+
 1. Our doubts and project needs.
 2. Try to cover affirmations like 'Don't do X, don't do Y' found in videos and blogs.
+
 example: "Don't use prototypes because this has a bad performance"
 
 - [http://debuggable.com/posts/understanding-hidden-classes-in-v8:4c7e81e4-1330-4398-8bd2-761bcbdd56cb](http://debuggable.com/posts/understanding-hidden-classes-in-v8:4c7e81e4-1330-4398-8bd2-761bcbdd56cb)
