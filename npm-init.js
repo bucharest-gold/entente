@@ -147,3 +147,9 @@ function gitConfigUser () {
   }
   return user;
 }
+
+if (!process.argv.includes('--no-install') && !process.argv.includes('-n')) {
+  process.on('exit', () => {
+    require('child_process').spawnSync('npm', ['install'])
+  });
+}
