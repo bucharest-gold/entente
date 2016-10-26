@@ -256,3 +256,18 @@ our process follow.
    release with any relevant notes. Here is a simple example:
    [Fidelity v4.1.0](https://github.com/bucharest-gold/fidelity/releases/tag/v4.1.0)
 7. Tweet, blog and otherwise promote your awesome success!
+
+
+## Release with automatic changelog generation
+
+Following the documentation from [conventional-changelog](https://github.com/conventional-changelog/standard-version#standard-version): 
+
+```
+when you land commits on your master branch, select the Squash and Merge option.
+Add a title and body that follows the conventional-changelog-standard conventions.
+When you're ready to release to npm:
+
+git checkout master; git pull origin master
+npm run release
+git push --follow-tags origin master; npm publish
+```
