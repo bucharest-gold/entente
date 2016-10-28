@@ -65,10 +65,10 @@ var baseData = {
   bugs: {url: `https://github.com/${user}/${basename}/issues`},
   homepage: `https://github.com/${user}/${basename}`,
   devDependencies: {
-    eslint: '~3.7.1',
+    eslint: '~3.8.1',
     'eslint-config-semistandard': '~7.0.0',
     'eslint-config-standard': '~6.2.0',
-    'eslint-plugin-promise': '~3.0.0',
+    'eslint-plugin-promise': '~3.3.0',
     'eslint-plugin-react': '~6.4.1',
     'eslint-plugin-standard': '~2.0.1',
     istanbul: '~0.4.5',
