@@ -1,15 +1,13 @@
-/**
- * NPM initialization script
- */
+// NPM initialization script.
 
-const fs = require('fs');
-const execSync = require('child_process').execSync;
+var fs = require('fs');
+var execSync = require('child_process').execSync;
 
-const gitUser = execSync('git config user.name').toString().replace('\n','');
-let user = gitConfigUser() || gitUser || 'USER';
+var gitUser = execSync('git config user.name').toString().replace('\n','');
+var user = gitConfigUser() || gitUser || 'USER';
 
 function createLicense () {
-  const LICENSE =`
+  var LICENSE =`
 Copyright 2016 Red Hat, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,7 +38,7 @@ if (!exists('test')) {
   fs.mkdirSync('test');
 }
 
-const baseData = {
+var baseData = {
   name: basename || package.name,
   version: '0.0.1',
   main: 'index.js',
@@ -82,7 +80,7 @@ const baseData = {
   }
 };
 
-let customizedData = {};
+var customizedData = {};
 Object.assign(customizedData, baseData);
 
 customizedData.gitHubUser = prompt('GitHub user name', user, n => user = n);
@@ -128,18 +126,18 @@ function exists (name) {
 }
 
 function gitConfigUser () {
-  let user = '';
+  var user = '';
   if (exists('.git/config')) {
-    let content = fs.readFileSync('.git/config').toString().split('\n');
-    let remoteFound = false;
-    for (let i = 0; i < content.length; i++) {
+    var content = fs.readFileSync('.git/config').toString().split('\n');
+    var remoteFound = false;
+    for (var i = 0; i < content.length; i++) {
       if (content[i] === '[remote "origin"]') {
         remoteFound = true;
         break;
       }
     }
     if (remoteFound) {
-      for (let i = 0; i < content.length; i++) {
+      for (var i = 0; i < content.length; i++) {
         if (content[i] === '[remote "origin"]') {
           user = content[++i].split(':')[1].split('/')[0];
           break;
@@ -150,7 +148,15 @@ function gitConfigUser () {
   return user;
 }
 
-if (!process.argv.includes('--no-install') && !process.argv.includes('-n')) {
+var needInstall = true;
+for (var i = 0; i < process.argv.length; i++) {
+  if (process.argv[i] === '--no-install' || process.argv[i] === '-n') {
+    needInstall = false;
+    break;
+  }
+}
+
+if (needInstall) {
   process.on('exit', () => {
     require('child_process').spawnSync('npm', ['install'])
   });
