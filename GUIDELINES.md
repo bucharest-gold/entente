@@ -278,6 +278,7 @@ Assuming your local master branch is up to date, the next steps are.
 2. Push to GitHub: `git push --follow-tags origin master`
 3. Publish to npmjs.com: `npm publish`
 4. Assuming all goes well, head over to your project on github and update the
-   release with any relevant notes. Here is a simple example:
-   [Fidelity v4.1.0](https://github.com/bucharest-gold/fidelity/releases/tag/v4.1.0)
+   release with any relevant notes. Using the generated CHANGELOG.md file
+   to document release changes is nice. Here is a simple example:
+   [Opossum v0.1.0](https://github.com/bucharest-gold/opossum/releases/tag/v0.1.0)
 5. Tweet, blog and otherwise promote your awesome success!
