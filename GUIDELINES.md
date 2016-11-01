@@ -245,29 +245,39 @@ Publishing packages to NPM usually just means running `$ npm publish` on the
 command line. But we like to have a little process around that. Some notes on
 our process follow.
 
-1. Always add `nsp` to your project as a `prepublish` property in `scripts`. This will ensure
+* Always add `nsp` to your project as a `prepublish` property in `scripts`. This will ensure
    that you can't publish your project if there are known security vulnerabilities.
-2. Ensure that `master` (or whatever release branch you use) passes a build on CI.
-3. Tag `master` with your version number. Typically, this begins with a 'v'. For example
-   `v4.1.2` is the tag for version 4.1.2.
-4. Push your changes, including the tags to github. `$ git push origin master --tags`
-5. Run `$ npm publish` to actually publish the package.
-6. Assuming all goes well, head over to your project on github and update the
+* Ensure that `master` (or whatever release branch you use) passes a build on CI.
+
+We've recently switched to
+[conventional-changelog](https://github.com/conventional-changelog/standard-version)
+for our release process and it's pretty darn nice. If you created your project
+using our npm-init.js template, then what you need is already installed with your
+project. Otherwise, install `standard-version`.
+
+    $ npm install --save-dev standard-version
+
+Add a line to the `scripts` section of your `package.json` like this.
+
+    "release": "standard-version"
+
+For this to really be useful, you'll want to ensure all of the commit messages on
+your master branch follow the
+[conventional-changelog standard-conventions](https://github.com/bcoe/conventional-changelog-standard/blob/master/convention.md).
+These conventions are pretty straightforward. The main thing to remember is to always
+prefix your commit messages with one of `fix:`, `feat:` or `perf:`. Other, optional
+prefixes are fine as well, e.g. `docs`.
+
+When merging commits from a pull request, be sure to use the "Squash and Merge" option
+in the GitHub user interface so you can ensure that the merged commit messages are
+formatted appropriately.
+
+Assuming your local master branch is up to date, the next steps are.
+
+1. Run standard-version: `npm run standard-version`
+2. Push to GitHub: `git push --follow-tags origin master`
+3. Publish to npmjs.com: `npm publish`
+4. Assuming all goes well, head over to your project on github and update the
    release with any relevant notes. Here is a simple example:
    [Fidelity v4.1.0](https://github.com/bucharest-gold/fidelity/releases/tag/v4.1.0)
-7. Tweet, blog and otherwise promote your awesome success!
-
-
-## Release with automatic changelog generation
-
-Following the documentation from [conventional-changelog](https://github.com/conventional-changelog/standard-version#standard-version): 
-
-```
-when you land commits on your master branch, select the Squash and Merge option.
-Add a title and body that follows the conventional-changelog-standard conventions.
-When you're ready to release to npm:
-
-git checkout master; git pull origin master
-npm run release
-git push --follow-tags origin master; npm publish
-```
+5. Tweet, blog and otherwise promote your awesome success!
