@@ -38,6 +38,18 @@ if (!exists('test')) {
   fs.mkdirSync('test');
 }
 
+function createGitignore () {
+  var GITIGNORE =`
+npm-debug.log
+node_modules
+`
+  fs.writeFileSync('.gitignore', GITIGNORE);
+}
+
+if (!exists('.gitignore')) {
+  createGitignore();
+}
+
 var baseData = {
   name: basename || package.name,
   version: '0.0.1',
