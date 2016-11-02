@@ -158,6 +158,8 @@ for (var i = 0; i < process.argv.length; i++) {
 
 if (needInstall) {
   process.on('exit', () => {
-    require('child_process').spawnSync('npm', ['install'])
+    console.log('Installing dependencies...');
+    let out = require('child_process').spawnSync('npm', ['install']);
+    console.log(out.output.toString('utf8'));
   });
 }
