@@ -29,7 +29,7 @@ Doing so based on test results is even better.
   - [Array map](https://github.com/bucharest-gold/perf-quest/tree/master/map-map_by_hand#readme)
 
 - Use `array.reduce` instead do it 'by hand'
-  - [Array reduce](https://github.com/bucharest-gold/perf-quest/tree/master/reduce-reduce_by_hand#readme) 
+  - [Array reduce](https://github.com/bucharest-gold/perf-quest/tree/master/reduce-reduce_by_hand#readme)
 
 ## How to contribute
 
@@ -52,3 +52,4 @@ example: "Don't use prototypes because this has a bad performance"
 - [https://www.html5rocks.com/en/tutorials/speed/v8/](https://www.html5rocks.com/en/tutorials/speed/v8/)
 - [https://coderwall.com/p/kvzbpa/don-t-use-array-foreach-use-for-instead](https://coderwall.com/p/kvzbpa/don-t-use-array-foreach-use-for-instead)
 - [https://www.youtube.com/watch?v=UJPdhx5zTaw](https://www.youtube.com/watch?v=UJPdhx5zTaw)
+- [http://lanceball.com/words/2016/10/14/data-hiding-in-es6/](http://lanceball.com/words/2016/10/14/data-hiding-in-es6/)
