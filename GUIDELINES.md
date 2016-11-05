@@ -155,7 +155,7 @@ features is possible. And there are some good features to take advatage of. Here
 some of our recommendations.
 
 * Use `let` and `const` instead of `var`. There is rarely ever a valid case for using
-  `var` in modern javascript code. If the variable is immutable (which I believe most
+  `var` in modern Javascript code. If the variable is immutable (which we believe most
   should be), use `const`. If the variable may be written, use `let`.
 * Use promises for asynchronous code execution, where appropriate. (Consider using
   bucharest-gold/fidelity).
@@ -186,7 +186,7 @@ class Rectangle {
   // The `this` object cannot be modified with a getter
   // so using `this[LENGTH]` here is safe.
   get length () {
-    return this[LENGHT];
+    return this[LENGTH];
   }
 
   // Same as above. Use a getter for object properties.
@@ -195,7 +195,7 @@ class Rectangle {
   }
 }
 
-// My preference is to use standalone functions rather than object methods.
+// Our preference is to use standalone functions rather than object methods.
 // This avoids the (possibly dangerous) use of the `this` keyword.
 function area (rectangle) {
   return rectangle.length * rectangle.width;
