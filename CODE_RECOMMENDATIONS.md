@@ -10,7 +10,7 @@ Doing so based on test results is even better.
 ## Results
 
 - Give preference to the use of ES6 classes.
-  We have 4 tests related with ES6 classes, and they always win.
+  We have 4 tests related with ES6 classes, and they win on the first three cases.
   - [Class and Classless](https://github.com/bucharest-gold/perf-quest/tree/master/class-classless/#readme)
   - [Class and 'UnfrozenClassless'](https://github.com/bucharest-gold/perf-quest/tree/master/class-unfrozenclassless/#readme)
   - [Class and module](https://github.com/bucharest-gold/perf-quest/tree/master/class-module/#readme)
@@ -30,6 +30,9 @@ Doing so based on test results is even better.
 
 - Use `array.reduce` instead do it 'by hand'
   - [Array reduce](https://github.com/bucharest-gold/perf-quest/tree/master/reduce-reduce_by_hand#readme)
+
+- If you are using WeakMap for data hiding, then prefer Symbol
+  - [WeakMap and Symbol](https://github.com/bucharest-gold/perf-quest/blob/master/weakmap-symbol#readme) 
 
 ## How to contribute
 
