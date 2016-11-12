@@ -112,7 +112,13 @@ plugins for `eslint` in our builds.
 First, add an `.eslintrc.json` file to your project and put this in there.
 
     {
-      "extends": "semistandard"
+      "extends": "semistandard",
+
+      "rules": {
+        "prefer-const": "error",
+        "block-scoped-var": "error",
+        "no-use-before-define": ["error", "nofunc"],
+      }
     }
 
 Then install `eslint` and the `semistandard` and dependent plugins.
@@ -154,12 +160,9 @@ At this point, we eschew any Node.js version below 4.x. This means, that usage o
 features is possible. And there are some good features to take advatage of. Here are
 some of our recommendations.
 
-* Use `let` and `const` instead of `var`. There is rarely ever a valid case for using
-  `var` in modern Javascript code. If the variable is immutable (which we believe most
-  should be), use `const`. If the variable may be written, use `let`.
 * Use promises for asynchronous code execution, where appropriate. (Consider using
   bucharest-gold/fidelity).
-* Use the new ES6 `class` keyword to create classess, and avoid direct manipulation
+* Use the new ES6 `class` keyword to create classes, and avoid direct manipulation
   of prototypes.
 * Use `Symbol`s to keep private data private. There are a few ways to achieve data privacy
   in Javascript. We've found that using a `Symbol` as a key is the most performant.
