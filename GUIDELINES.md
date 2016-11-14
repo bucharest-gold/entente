@@ -148,18 +148,24 @@ Add a `make` target
 ### Some things linting will catch
 
 Unused variables, proper casing of function and variable names, undeclared global variables,
-modification of global variables, missing semi-colons. Catching unused variables is great
-because this might alert you to a typo in your code. Modifying global variables could have
-adverse affects on other code within your system, including dependencies, if the other code
-is not aware of the modifications. For these and many other reasons, we think linting is a
+modification of global variables, missing semi-colons, consistent use of const/let/var.
+Catching unused variables is great because this might alert you to a typo in your code.
+Modifying global variables could have adverse affects on other code within your system,
+including dependencies, if the other code is not aware of the modifications. Using `const`
+is preferred to `var`. If a variable must be mutable, use `let` (`var` is also allowed for
+mutable variables for cases where `let` may cause performance issues, but is restricted to
+block scope, so will act like `let`. For these and many other reasons, we think linting is a
 'good thing'.
 
 ### Some things linting _won't_ catch, but that you should consider
 
-At this point, we eschew any Node.js version below 4.x. This means, that usage of ES6
-features is possible. And there are some good features to take advatage of. Here are
-some of our recommendations.
+At this point, we eschew any Node.js version below 4.x. This means that usage of ES6
+features is possible, and there are some good features to take advantage of. Here are some
+of our recommendations.
 
+* Use `let` and `const` instead of `var`. There is rarely ever a valid case for using
+  `var` in modern Javascript code. If the variable is immutable (which we believe most
+  should be), use `const`. If the variable may be written, use `let`.
 * Use promises for asynchronous code execution, where appropriate. (Consider using
   bucharest-gold/fidelity).
 * Use the new ES6 `class` keyword to create classes, and avoid direct manipulation
