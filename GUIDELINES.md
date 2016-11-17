@@ -283,7 +283,7 @@ formatted appropriately.
 
 Assuming your local master branch is up to date, the next steps are.
 
-1. Run standard-version: `npm run standard-version`
+1. Run standard-version: `npm run release`
 2. Push to GitHub: `git push --follow-tags origin master`
 3. Publish to npmjs.com: `npm publish`
 4. Assuming all goes well, head over to your project on github and update the
