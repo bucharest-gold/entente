@@ -87,7 +87,7 @@ var baseData = {
     nsp: '~2.6.2',
     'tap-spec': '~4.1.1',
     tape: '~4.6.2',
-    'szero': '^0.5.1',
+    'szero': '^0.7.1',
     'standard-version': '^3.0.0'
   }
 };
