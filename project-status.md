@@ -16,7 +16,7 @@ Fidelity is an implementation of the Promise/A+ API. It is interchangeable with 
 
 ROI is a small, lightweight and fast HTTP client.
 
-**Status** Maintenance. Helio, please fill in some details.
+**Status** Maintenance. The main objective of the project was achieved - A simple and fast Node.js module for JBoss projects integration that uses Basic Authentication.
 
 ## [Opossum](https://www.npmjs.com/package/opossum)
 
