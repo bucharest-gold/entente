@@ -29,9 +29,17 @@ if (!exists('LICENSE')) {
 }
 
 if (!exists('.eslintrc.json')) {
-  fs.writeFileSync('.eslintrc.json', `{
-  "extends": "semistandard"
-}`);
+  var ESLINT = `
+{
+  "extends": "semistandard",
+  "rules": {
+    "prefer-const": "error",
+    "block-scoped-var": "error",
+    "no-use-before-define": ["error", "nofunc"]
+  }
+}
+  ` 
+  fs.writeFileSync('.eslintrc.json', ESLINT);
 }
 
 if (!exists('test')) {
