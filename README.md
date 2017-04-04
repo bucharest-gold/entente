@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/bucharest-gold/entente.png?label=ready&title=Ready)](https://waffle.io/bucharest-gold/entente)
 # Entente
 A place for open discussion of Node.js within JBoss Middleware, including
 ideas for projects, collaboration, etc.
