@@ -46,6 +46,7 @@ A few side projects have grown so far from our internal development needs.
 * [Lightbright](https://www.npmjs.com/package/lightbright) - a lightweight module for code tracing
 * [Genet](https://www.npmjs.com/package/genet) - a code profiling tool
 * [Szero](https://www.npmjs.com/package/szero) - a dependency checker
+* [Opossum](https://www.npmjs.com/package/opossum) - a circuit breaker module
 
 
 ### Coordination with RHEL Software Collections
